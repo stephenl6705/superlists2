@@ -47,10 +47,7 @@ class LoginTest(FunctionalTest):
         self.browser.find_element_by_id(
             'authentication_email'
         ).send_keys('edith@mockmyid.com')
-        button = self.wait_for(
-            lambda: self.browser.find_element_by_tag_name('button')
-        )
-        button.click()
+        self.browser.find_element_by_class_name('continue').click()
 
         # The Persona window closes
         self.switch_to_new_window('To-Do')
@@ -73,7 +70,7 @@ class LoginTest(FunctionalTest):
         self.wait_to_be_logged_in()
 
         # Refreshing the page, she sees it's a real session login,
-        # not just aone-off for that page
+        # not just one-off for that page
         self.browser.refresh()
         self.wait_to_be_logged_in()
 

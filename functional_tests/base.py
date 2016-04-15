@@ -31,7 +31,7 @@ class FunctionalTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(3)
+        self.browser.implicitly_wait(DEFAULT_WAIT)
 
     def tearDown(self):
         if self._test_has_failed():
@@ -81,11 +81,3 @@ class FunctionalTest(StaticLiveServerTestCase):
     def get_item_input_box(self):
         return self.browser.find_element_by_id('id_text')
 
-    def wait_for(self, function, timeout=DEFAULT_WAIT):
-        start_time = time.time()
-        while time.time() - start_time < timeout:
-            try:
-                return function()
-            except (WebDriverException):
-                time.sleep(0.1)
-        return function()
