@@ -1,10 +1,6 @@
 /*global $ */
 
 var initialize = function(navigator, user, token, urls) {
-    $('#id_login').on('click', function() {
-        navigator.id.request();
-    });
-
     navigator.id.watch({
         loggedInUser: user,
         onlogin: function (assertion) {
@@ -16,6 +12,11 @@ var initialize = function(navigator, user, token, urls) {
                 .fail(function () { navigator.id.logout(); });
         },
     });
+
+    $('#id_login').on('click', function() {
+        navigator.id.request();
+    });
+
 };
 window.Superlists = {
     Accounts: {

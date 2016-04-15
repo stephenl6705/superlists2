@@ -3,7 +3,7 @@ from fabric.api import env, local, run
 import random
 
 REPO_URL = 'https://github.com/stephenl6705/superlists2.git'
-env.hosts = ['stephen_langestraat@superlists.belleis.com']
+env.hosts = ['stephen_langestraat@superlists-staging.belleis.com']
 env.key_filename = ['~/.ssh/google_compute_engine']
 
 def deploy():
