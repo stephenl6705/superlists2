@@ -47,7 +47,10 @@ class LoginTest(FunctionalTest):
         self.browser.find_element_by_id(
             'authentication_email'
         ).send_keys('edith@mockmyid.com')
-        self.browser.find_element_by_tag_name('button').click()
+        button = self.wait_for(
+            lambda: self.browser.find_element_by_tag_name('button')
+        )
+        button.click()
 
         # The Persona window closes
         self.switch_to_new_window('To-Do')
